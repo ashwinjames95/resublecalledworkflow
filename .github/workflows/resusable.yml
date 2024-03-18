@@ -1,0 +1,34 @@
+name: Combine Action
+
+on:
+  workflow_call:
+    inputs:
+      param1:
+        description: 'First parameter'
+        type: string
+        default: " a "
+      param2:
+        description: 'Second parameter'
+        type: string
+        default: "b "
+    outputs:
+       combineoutput: 
+         description: "The combined word output"
+         value: ${{ jobs.combine_parameters.outputs.my_output }}
+       
+      
+
+jobs:
+  combine_parameters:
+    name: Combine Parameters
+    runs-on: ubuntu-latest
+    outputs: 
+      my_output: ${{steps.c2.outputs.result}} 
+    steps:
+      - name: Combine Parameters
+        id: C2
+        run: echo '${{ inputs.param1 }}-${{ inputs.param2 }} '
+        # run: echo ' ${{ inputs.param1 }}-${{ inputs.param2 }} '
+        
+    
+        
