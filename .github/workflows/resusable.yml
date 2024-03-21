@@ -23,7 +23,7 @@ jobs:
     name: Combine Parameters
     runs-on: ubuntu-latest
     outputs: 
-      my_output: ${{steps.c2.output5}} 
+      my_output: ${{steps.c2.outputs}} 
     steps:
       - name: Combine Parameters
         id: C2
