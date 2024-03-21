@@ -23,11 +23,13 @@ jobs:
     name: Combine Parameters
     runs-on: ubuntu-latest
     outputs: 
-      my_output: ${{steps.c2.outputs}} 
+      my_output: ${{steps.c2.outputs.output5}} 
     steps:
       - name: Combine Parameters
         id: C2
         run: echo '${{ inputs.param1 }}-${{ inputs.param2 }} ' >> "$GITHUB_OUTPUT"
+        env: 
+            output5:  $GITHUB_OUTPUT
        
         
     
